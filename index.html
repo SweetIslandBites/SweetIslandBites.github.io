@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt">
 <head>
@@ -297,46 +298,113 @@
   .info-text strong { color: var(--text); font-weight: 600; }
 
   #payment { background: var(--nude); }
-  .payment-cards {
-    display: flex; gap: 1.5rem; flex-wrap: wrap;
-    margin-top: 2.5rem;
+
+  .payment-layout { margin-top: 2.5rem; }
+
+  /* ── Method Cards ── */
+  .payment-methods-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 1.5rem; margin-bottom: 1.8rem;
   }
   .payment-card {
     background: var(--white); border: 1px solid var(--blush);
-    border-radius: 16px; overflow: hidden;
-    flex: 1; min-width: 200px; max-width: 280px;
+    border-radius: 20px; overflow: hidden;
     transition: transform .3s, box-shadow .3s;
     display: flex; flex-direction: column;
   }
   .payment-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 18px 48px rgba(232,99,122,.13);
+    transform: translateY(-5px);
+    box-shadow: 0 24px 60px rgba(232,99,122,.16);
   }
   .payment-card-accent {
-    height: 3px;
+    height: 4px;
     background: linear-gradient(90deg, var(--blush), var(--rose));
   }
   .payment-card-body {
-    padding: 1.8rem;
-    display: flex; align-items: flex-start; gap: 1.1rem;
+    padding: 2rem 2rem 1.8rem;
+    display: flex; flex-direction: column; gap: 1.1rem;
   }
   .payment-icon-wrap {
-    width: 48px; height: 48px; border-radius: 12px;
-    background: var(--blush);
+    width: 58px; height: 58px; border-radius: 16px;
+    background: linear-gradient(135deg, var(--blush), rgba(232,99,122,.22));
     display: flex; align-items: center; justify-content: center;
     flex-shrink: 0;
   }
-  .payment-icon-wrap svg { width: 22px; height: 22px; color: var(--rose-deep); }
-  .payment-text {}
+  .payment-icon-wrap svg { width: 26px; height: 26px; color: var(--rose-deep); }
   .payment-label {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 1.35rem; font-weight: 600; color: var(--text);
-    line-height: 1.2;
+    font-size: 1.75rem; font-weight: 600; color: var(--text); line-height: 1.15;
   }
   .payment-sub {
-    font-size: .8rem; color: var(--text-soft); margin-top: .25rem;
-    letter-spacing: .04em;
+    font-size: .87rem; color: var(--text-soft);
+    letter-spacing: .03em; line-height: 1.6; margin-top: -.3rem;
   }
+  .payment-pill {
+    display: inline-flex; align-items: center; gap: .4rem;
+    background: var(--blush); color: var(--rose-deep);
+    font-size: .71rem; font-weight: 600; letter-spacing: .1em;
+    text-transform: uppercase; padding: .32rem .9rem;
+    border-radius: 50px; width: fit-content;
+  }
+  .payment-pill svg { width: 11px; height: 11px; }
+
+  /* ── How it Works ── */
+  .payment-how {
+    background: var(--white); border: 1px solid var(--blush);
+    border-radius: 20px; padding: 2rem 2.2rem 2.4rem;
+    margin-bottom: 1.8rem;
+  }
+  .payment-how-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem; font-weight: 600; color: var(--text);
+    margin-bottom: 2rem;
+    display: flex; align-items: center; gap: .55rem;
+  }
+  .payment-how-title svg { width: 17px; height: 17px; color: var(--rose); }
+  .payment-steps {
+    display: flex; align-items: flex-start; gap: 0;
+  }
+  .payment-step {
+    flex: 1; display: flex; flex-direction: column;
+    align-items: center; text-align: center; position: relative;
+  }
+  .payment-step:not(:last-child)::after {
+    content: '';
+    position: absolute; top: 19px; left: 55%; right: -55%;
+    height: 2px;
+    background: linear-gradient(90deg, var(--rose), var(--blush));
+  }
+  .step-num {
+    width: 40px; height: 40px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--rose), var(--rose-deep));
+    color: #fff; font-weight: 700; font-size: .88rem;
+    display: flex; align-items: center; justify-content: center;
+    position: relative; z-index: 1; margin-bottom: .8rem;
+    box-shadow: 0 4px 14px rgba(232,99,122,.35);
+  }
+  .step-label {
+    font-size: .8rem; font-weight: 600; color: var(--text);
+    letter-spacing: .03em; line-height: 1.3;
+  }
+  .step-desc {
+    font-size: .73rem; color: var(--text-soft);
+    margin-top: .2rem; line-height: 1.45; padding: 0 .4rem;
+  }
+
+  /* ── Trust Strip ── */
+  .payment-trust {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;
+  }
+  .trust-item {
+    background: var(--white); border: 1px solid var(--blush);
+    border-radius: 14px; padding: 1.3rem 1.4rem;
+    display: flex; align-items: flex-start; gap: .85rem;
+    transition: transform .2s, box-shadow .2s;
+  }
+  .trust-item:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(232,99,122,.1); }
+  .trust-item svg { width: 20px; height: 20px; color: var(--rose); flex-shrink: 0; margin-top: .15rem; }
+  .trust-item strong { font-size: .88rem; color: var(--text); display: block; margin-bottom: .25rem; font-weight: 600; }
+  .trust-item p { font-size: .78rem; color: var(--text-soft); line-height: 1.55; margin: 0; }
 
   #order {
     background: linear-gradient(135deg, var(--rose) 0%, var(--rose-deep) 100%);
@@ -388,7 +456,13 @@
   @media (max-width: 700px) {
     .nav-links { display: none; }
     .delivery-layout { grid-template-columns: 1fr; }
-    .payment-card { max-width: 100%; }
+    .payment-methods-grid { grid-template-columns: 1fr; }
+    .payment-trust { grid-template-columns: 1fr; }
+    .payment-steps { flex-direction: column; gap: 1.2rem; }
+    .payment-step { flex-direction: row; text-align: left; align-items: flex-start; gap: 1rem; }
+    .payment-step::after { display: none; }
+    .step-num { flex-shrink: 0; }
+    .payment-how { padding: 1.6rem 1.4rem; }
   }
 </style>
 </head>
@@ -598,30 +672,103 @@
     <h2 class="section-title">Formas de <em>Pagamento</em></h2>
     <div class="divider"></div>
   </div>
-  <div class="payment-cards">
 
-    <div class="payment-card reveal">
-      <div class="payment-card-accent"></div>
-      <div class="payment-card-body">
-        <div class="payment-icon-wrap">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
-        </div>
-        <div class="payment-text">
+  <div class="payment-layout reveal">
+
+    <!-- ── Method Cards ── -->
+    <div class="payment-methods-grid">
+
+      <div class="payment-card">
+        <div class="payment-card-accent"></div>
+        <div class="payment-card-body">
+          <div class="payment-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+          </div>
           <div class="payment-label">MB WAY</div>
-          <div class="payment-sub">Rápido e simples</div>
+          <div class="payment-sub">Transferência rápida e segura via telemóvel. Enviamos o número após confirmarmos a tua encomenda.</div>
+          <div class="payment-pill">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.58 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.9a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            Número enviado após confirmação
+          </div>
+        </div>
+      </div>
+
+      <div class="payment-card">
+        <div class="payment-card-accent"></div>
+        <div class="payment-card-body">
+          <div class="payment-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2"/><path d="M6 12h.01M18 12h.01"/></svg>
+          </div>
+          <div class="payment-label">Dinheiro</div>
+          <div class="payment-sub">Pagamento em numerário no momento da entrega. Sem app, sem transferências,  tão simples quanto isso.</div>
+          <div class="payment-pill">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Paga na entrega, sem stress
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ── How it Works ── -->
+    <div class="payment-how">
+      <div class="payment-how-title">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        Como funciona o processo
+      </div>
+      <div class="payment-steps">
+        <div class="payment-step">
+          <div class="step-num">1</div>
+          <div>
+            <div class="step-label">Encomenda</div>
+            <div class="step-desc">Faz o pedido via Instagram</div>
+          </div>
+        </div>
+        <div class="payment-step">
+          <div class="step-num">2</div>
+          <div>
+            <div class="step-label">Confirmação</div>
+            <div class="step-desc">Combinamos data e método de pagamento</div>
+          </div>
+        </div>
+        <div class="payment-step">
+          <div class="step-num">3</div>
+          <div>
+            <div class="step-label">Sinal (se aplicável)</div>
+            <div class="step-desc">50% antecipado para encomendas acima de 15 €</div>
+          </div>
+        </div>
+        <div class="payment-step">
+          <div class="step-num">4</div>
+          <div>
+            <div class="step-label">Entrega & Pagamento</div>
+            <div class="step-desc">Recebe a tua box fresquinha</div>
+          </div>
         </div>
       </div>
     </div>
 
-    <div class="payment-card reveal">
-      <div class="payment-card-accent"></div>
-      <div class="payment-card-body">
-        <div class="payment-icon-wrap">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2"/><path d="M6 12h.01M18 12h.01"/></svg>
+    <!-- ── Trust Strip ── -->
+    <div class="payment-trust">
+      <div class="trust-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <div>
+          <strong>Pagamento Seguro</strong>
+          <p>Processamos cada pedido com total transparência e confiança.</p>
         </div>
-        <div class="payment-text">
-          <div class="payment-label">Dinheiro em Mãos</div>
-          <div class="payment-sub">Pagamento no ato da entrega</div>
+      </div>
+      <div class="trust-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        <div>
+          <strong>Confirmação Imediata</strong>
+          <p>Assim que recebemos o comprovativo, a tua box entra em preparação.</p>
+        </div>
+      </div>
+      <div class="trust-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        <div>
+          <strong>Sem Surpresas</strong>
+          <p>Preços fixos, sem taxas escondidas. O que vês é o que pagas.</p>
         </div>
       </div>
     </div>
@@ -650,7 +797,7 @@
 
 <footer>
   <p><strong>Sweet Island Bites</strong> &nbsp;·&nbsp; Simplesmente Saboroso &nbsp;·&nbsp; São Miguel, Açores</p>
-  <p style="margin-top:.5rem;">© 2025 Sweet Island Bites. Todos os direitos reservados.</p>
+  <p style="margin-top:.5rem;">© 2026 Sweet Island Bites. Todos os direitos reservados.</p>
 </footer>
 
 <script>
