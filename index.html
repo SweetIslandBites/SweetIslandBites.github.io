@@ -126,6 +126,12 @@
   }
   .btn-outline:hover { background: var(--blush); transform: translateY(-2px); }
 
+  .hearts { position: absolute; inset: 0; pointer-events: none; z-index: 1; }
+  .heart {
+    position: absolute; font-size: 1.1rem; opacity: .25;
+    animation: float linear infinite;
+  }
+
   .petals { position: absolute; inset: 0; pointer-events: none; z-index: 1; }
   .petal {
     position: absolute;
@@ -367,11 +373,11 @@
     from { opacity: 0; transform: translateY(22px); }
     to   { opacity: 1; transform: translateY(0); }
   }
-  @keyframes floatPetal {
-    0%   { transform: translateY(100vh) rotate(0deg) scale(.8);  opacity: 0; }
-    10%  { opacity: .2; }
-    90%  { opacity: .15; }
-    100% { transform: translateY(-10vh) rotate(180deg) scale(1.2); opacity: 0; }
+  @keyframes float {
+    0%   { transform: translateY(100vh) rotate(0deg);   opacity: 0; }
+    10%  { opacity: .25; }
+    90%  { opacity: .25; }
+    100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
   }
   .reveal {
     opacity: 0; transform: translateY(28px);
@@ -401,7 +407,7 @@
 <section class="hero" id="home">
   <div class="hero-bg"></div>
   <div class="hero-dots"></div>
-  <div class="petals" id="petals"></div>
+  <div class="hearts" id="hearts"></div>
   <div class="hero-content">
     <p class="hero-eyebrow">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
@@ -648,20 +654,20 @@
 </footer>
 
 <script>
-  const petalContainer = document.getElementById('petals');
-  for (let i = 0; i < 16; i++) {
-    const p = document.createElement('div');
-    p.className = 'petal';
-    p.style.left = Math.random() * 100 + '%';
-    p.style.animationDuration = (10 + Math.random() * 14) + 's';
-    p.style.animationDelay = (Math.random() * 18) + 's';
-    const size = 4 + Math.random() * 5;
-    p.style.width = size + 'px';
-    p.style.height = size + 'px';
-    p.style.opacity = 0;
-    petalContainer.appendChild(p);
+  const heartContainer = document.getElementById('hearts');
+  const heartChars = ['♡','♥'];
+  for (let i = 0; i < 18; i++) {
+    const h = document.createElement('span');
+    h.className = 'heart';
+    h.textContent = heartChars[Math.floor(Math.random() * heartChars.length)];
+    h.style.left = Math.random() * 100 + '%';
+    h.style.animationDuration = (8 + Math.random() * 12) + 's';
+    h.style.animationDelay = (Math.random() * 15) + 's';
+    h.style.fontSize = (.6 + Math.random() * .9) + 'rem';
+    heartContainer.appendChild(h);
   }
 
+  // Scroll reveal
   const observer = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: 0.12 });
